@@ -1,0 +1,50 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light;
+  color: #1a202c; /* dark text */
+  background-color: #f9fafb; /* light background */
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+input, textarea, select {
+  color: #1a202c !important; /* dark text for inputs */
+  background-color: white;
+  border-radius: 0.375rem; /* rounded-md */
+  border: 1px solid #cbd5e0; /* gray-300 */
+  padding: 0.5rem 0.75rem;
+  transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+input:focus, textarea:focus, select:focus {
+  outline: none;
+  border-color: #5a67d8; /* indigo-500 */
+  box-shadow: 0 0 0 3px rgba(90, 103, 216, 0.3); /* indigo focus ring */
+}
+
+.highlighted-line {
+  background-color: rgba(255, 255, 0, 0.2);
+  /* Light yellow background */
+}
+
+/* Optional: Style the glyph margin (line numbers area) */
+.highlighted-line-glyph {
+  background-color: rgba(255, 255, 0, 0.5);
+  /* Light yellow in the margin */
+}

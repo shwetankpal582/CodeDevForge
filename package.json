@@ -1,0 +1,13 @@
+{
+  "name": "codedevforge",
+  "version": "1.0.0",
+  "description": "codeDevForge is a real-time collaborative code review platform designed to enhance the code review experience by enabling real-time collaboration. Developers can upload code snippets, and reviewers can provide feedback on specific lines in real time.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
