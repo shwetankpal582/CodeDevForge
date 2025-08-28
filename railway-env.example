@@ -1,0 +1,17 @@
+# Railway Environment Variables Configuration
+# Copy these variables to your Railway dashboard environment variables section
+
+# MongoDB Connection String
+MONGO_URI=mongodb+srv://shwetankpal1786:WMWqg4WtcCXTgX7h@upse.stxdrpo.mongodb.net/
+
+# JWT Secret (generate a secure random string)
+JWT_SECRET=your_secure_jwt_secret_here
+
+# Server Port (Railway will set this automatically)
+PORT=5000
+
+# Frontend URL for CORS
+CLIENT_URL=https://codedevforge.netlify.app
+
+# Node.js environment
+NODE_ENV=production

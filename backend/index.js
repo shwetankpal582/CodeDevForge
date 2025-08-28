@@ -33,14 +33,26 @@ mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopol
 
 app.use(cors());   // frontend + backend connection error remove
 app.use(express.json());   // parse json data
-app.use('/auth', authRoutes);  
+app.use('/auth', authRoutes);
 app.use('/snippets', snippetRoutes);
 app.use('/comments', commentRoutes);
 app.use('/change-history', changeHistoryRoute);
 
 
 app.get('/', (req, res) => {
-    res.send("API is running");
+    res.json({
+        message: "CodeDevForge API is running",
+        status: "healthy",
+        timestamp: new Date().toISOString()
+    });
+});
+
+app.get('/health', (req, res) => {
+    res.json({
+        status: "healthy",
+        timestamp: new Date().toISOString(),
+        uptime: process.uptime()
+    });
 });
 
 io.on("connection", (socket) => {
