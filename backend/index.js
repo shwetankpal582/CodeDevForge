@@ -1,5 +1,7 @@
-if (process.env.NODE_ENV !== 'production') {
+try {
     require('dotenv').config();
+} catch (err) {
+    // dotenv may be absent in production environments
 }
 const express = require('express');
 const mongoose = require('mongoose');
