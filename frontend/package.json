@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "prebuild": "npm ci --only=production",
+    "prebuild": "echo \"skip prebuild in Docker\"",
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview"
