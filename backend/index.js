@@ -22,8 +22,15 @@ const httpServer = createServer(app);
 const PORT = process.env.PORT || 5000;
 const io = new Server(httpServer, {
     cors: {
-        origin: '*',
+        origin: [
+            'http://localhost:3000',
+            'http://localhost:5173',
+            'http://localhost:4173',
+            'https://codedevforge.netlify.app',
+            'https://codedevforge-codedevforge.up.railway.app'
+        ],
         methods: ['GET', 'POST'],
+        credentials: true
     },
 });
 
@@ -34,7 +41,38 @@ mongoose.connect(process.env.MONGO_URI)
     .catch(err => console.log(err));
 
 
-app.use(cors());   // frontend + backend connection error remove
+// CORS configuration
+const corsOptions = {
+    origin: function (origin, callback) {
+        // Allow requests with no origin (like mobile apps or curl requests)
+        if (!origin) return callback(null, true);
+
+        // List of allowed origins
+        const allowedOrigins = [
+            'http://localhost:3000',
+            'http://localhost:5173',
+            'http://localhost:4173',
+            'https://codedevforge.netlify.app',
+            'https://codedevforge-codedevforge.up.railway.app'
+        ];
+
+        if (allowedOrigins.indexOf(origin) !== -1) {
+            callback(null, true);
+        } else {
+            callback(new Error('Not allowed by CORS'));
+        }
+    },
+    credentials: true,
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With'],
+    optionsSuccessStatus: 200
+};
+
+app.use(cors(corsOptions));
+
+// Handle preflight requests
+app.options('*', cors(corsOptions));
+
 app.use(express.json());   // parse json data
 app.use('/auth', authRoutes);
 app.use('/snippets', snippetRoutes);
