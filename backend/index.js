@@ -23,9 +23,6 @@ const PORT = process.env.PORT || 5000;
 const io = new Server(httpServer, {
     cors: {
         origin: [
-            'http://localhost:3000',
-            'http://localhost:5173',
-            'http://localhost:4173',
             'https://codedevforge.netlify.app',
             'https://codedevforge-codedevforge.up.railway.app'
         ],
