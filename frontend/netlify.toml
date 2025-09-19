@@ -1,17 +1,28 @@
 [build]
-  command = "npm ci && npm run build"
-  publish = "dist"
+  base = "frontend"         # enter frontend directory
+  command = "npm run build" # run vite build
+  publish = "dist"          # deploy built files
 
 [build.environment]
-  VITE_BACKEND_URL = "https://codedevforge-codedevforge.up.railway.app"
+  NODE_VERSION = "18"
+  CLIENT_URL = "https://yourapp.netlify.app"
+  JWT_SECRET = "your_secret"
+  MONGO_URI = "your_mongo_connection"
+  PORT = "3000"
 
+# Functions (API will live here after step 2)
+[functions]
+  directory = "netlify/functions"
+  node_bundler = "esbuild"
+
+# SPA fallback
 [[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
 
-[[headers]]
-  for = "/assets/*"
-  [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
- 
+# API redirect
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/api"
+  status = 200

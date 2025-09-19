@@ -1,1 +1,3 @@
-export const backendURL = import.meta.env.VITE_BACKEND_URL || "https://codedevforge-codedevforge.up.railway.app";
+// ✅ Use Vite environment variable
+const backendUrl = import.meta.env.VITE_BACKEND_URL;
+export default backendUrl;

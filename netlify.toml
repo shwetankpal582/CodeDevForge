@@ -1,31 +1,12 @@
 [build]
-  # Build command for your React app
-  command = "cd frontend && npm ci && npm run build"
+  base = "frontend"
+  command = "npm run build"
+  publish = "dist"
 
-  # Directory to publish (where your built files are)
-  publish = "frontend/dist"
+[build.environment]
+  NODE_VERSION = "18"
 
 [[redirects]]
-  # SPA routing - redirect all routes to index.html
   from = "/*"
   to = "/index.html"
   status = 200
-
-[build.environment]
-  # Ensure Node.js version compatibility
-  NODE_VERSION = "18"
-  VITE_BACKEND_URL = "https://codedevforge-codedevforge.up.railway.app"
-
-[[headers]]
-  # Cache static assets
-  for = "/static/*"
-  [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
-
-[[headers]]
-  # Security headers
-  for = "/*"
-  [headers.values]
-    X-Frame-Options = "DENY"
-    X-Content-Type-Options = "nosniff"
-    X-XSS-Protection = "1; mode=block"
