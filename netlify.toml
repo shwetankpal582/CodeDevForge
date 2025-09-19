@@ -14,7 +14,6 @@
 [build.environment]
   # Ensure Node.js version compatibility
   NODE_VERSION = "18"
-  VITE_BACKEND_URL = "https://codedevforge-codedevforge.up.railway.app"
 
 [[headers]]
   # Cache static assets
